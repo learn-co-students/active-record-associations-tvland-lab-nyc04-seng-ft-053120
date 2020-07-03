@@ -6,11 +6,7 @@ class Actor < ActiveRecord::Base
     self.first_name + " " + self.last_name
   end
 
-  def all_characters
-    Character.all.select { |character| character.actor_id == self.id }
-  end
-
   def list_roles
-    self.all_characters.map { |character| "#{character.name} - #{character.show.name}" }
+    self.characters.map { |character| "#{character.name} - #{character.show.name}" }
   end
 end
