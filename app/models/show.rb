@@ -4,6 +4,7 @@ class Show < ActiveRecord::Base
   belongs_to :network
 
   def actors_list
+    binding.pry
     characters_array = Character.where(show_id: self.id)
     actor_id_array = characters_array.map { |c| c.actor_id }
     actor_id_array.map { |id| Actor.find(id).full_name }
